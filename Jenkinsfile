@@ -47,5 +47,14 @@ pipeline{
                 sh 'mvn -s settings.xml deploy'
             }
         }
+        stage("artifact-deployment"){
+            agent{
+                label 'ANSIBLE-NODE1'
+            }
+            steps{
+                sh 'ansible-playbook -i inventory deployment_playbook.yml -e "build_number=${BUILD_NUMBER}\"'
+            }
+        }
+            
     }
 }
