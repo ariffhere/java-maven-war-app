@@ -24,4 +24,4 @@
     ansible.builtin.shell: cp /home/ec2-user/hello-world.war /home/ec2-user/apache-tomcat-9.0.72/webapps/hello_world.war
 
   - name: remove the artifact
-    ansible.builtin.shell: rm -rf cp /home/ec2-user/heello_world.war
+    ansible.builtin.shell: "rm -rf cp /home/ec2-user/heello_world.war"
