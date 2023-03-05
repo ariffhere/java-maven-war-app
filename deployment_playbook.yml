@@ -3,7 +3,7 @@
   hosts: all
   become: true
   vars:
-    nexus_url: http://34.231.20.81:8081/repository
+    nexus_url: http://http://3.236.245.171:8081/repository
     repository_type: mymaven-release
     group_id: com%2Fmycompany%2Fapp
     artifact_id: hello-world-war
@@ -13,6 +13,7 @@
   - name: Download file from a file path
     ansible.builtin.get_url:
       url: "{{nexus_url}}/{{repository_type}}/{{group_id}}%2F{{artifact_id}}%2F{{version}}-{{build_number}}%2F{{artifact_id}}-{{version}}-{{ build_number}}.war"
+      http://3.236.245.171:8081/repository/mymaven-release/com%2Fmycompany%2Fapp%2Fhello-world-war%2F1.0.0-17%2Fhello-world-war-1.0.0-17.war
       dest: /home/ec2-user
       username: admin
       password: ariff
