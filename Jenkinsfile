@@ -23,21 +23,21 @@ pipeline{
               sh 'mvn clean install'
             }
         }
-        //stage("sonar"){
-         //   steps{
-         //       script{
-          //         withSonarQubeEnv(credentialsId: 'mysonar') {
-           //             sh "${tool("mysonar")}/bin/sonar-scanner \
-          //              -Dsonar.projectKey=java-maven-war-app \
-           //             -Dsonar.sources=. \
-           //             -Dsonar.java.binaries=target \
-            //            -Dsonar.host.url=http://172.31.5.133:9000 \
-            //            -Dsonar.login=sqp_37bb123b8b54d4e281b8fce80dca1efc1c3cec76"
-           //         }
-           //     }
-        //    }
+        stage("sonar"){
+            steps{
+                script{
+                   withSonarQubeEnv(credentialsId: 'mysonar') {
+                        sh "${tool("mysonar")}/bin/sonar-scanner \
+                        -Dsonar.projectKey=java-maven-war-app \
+                        -Dsonar.sources=. \
+                        -Dsonar.java.binaries=target \
+                        -Dsonar.host.url=http://3.235.135.135:9000 \
+                        -Dsonar.login=sqp_6b1fa5446007869f30ed443bbf9a7da396acf2b5"
+                    }
+                }
+            }
 
-       // }
+        }
         stage("artifact-upload"){
             steps{
                 sh 'mvn -s settings.xml deploy'
